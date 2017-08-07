@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.banner{
+				width: 790px;
+				height: 340px;
+				margin: 50px auto;
+				position: relative;
+			}
+			.banner .banner-li{
+				position: relative;
+				z-index: 1;
+				
+			}
+			.banner .banner-li li{
+				position: absolute;
+			}
+			.banner ol{
+				position: absolute;
+				/*z-index: 99999999;*/
+				overflow: hidden;
+				bottom: 20px;
+				left: 50%;
+				transform: translate(-50%);
+				z-index: 2;
+				background: rgba(255,255,255,.3);
+				border-radius: 15px;
+				padding: 5px 15px;
+				
+			}
+			.banner ol li{
+				width: 15px;
+				height: 15px;
+				background: #FFFFFF;
+				border-radius: 50%;
+				float: left;
+				cursor: pointer;
+			}
+			.banner ol li+li{
+				margin-left: 5px;
+			}
+			.banner .Btn{
+				position: absolute;
+				top: 50%;
+				transform: translate(0,-50%);
+				width: 100%;
+				z-index: 999999999;
+				color: white;
+			}
+			.banner .Btn span{
+				display: block;
+				background: rgba(255,255,255,.3);
+				
+				width: 20px ;
+				height: 40px;
+				float: right;
+				line-height: 40px;
+				cursor: pointer;
+			}
+			.banner .Btn span:nth-child(1){
+				float: left;
+			}
+			.banner .banner-btn li.cur{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<ul class="banner-li">
+				<li><img src="images/01.jpg" alt="" /></li>
+				<li><img src="images/02.jpg" alt="" /></li>
+				<li><img src="images/03.jpg" alt="" /></li>
+				<li><img src="images/04.png" alt="" /></li>
+				<li><img src="images/05.png" alt="" /></li>
+			</ul>
+<!--			<ol class="banner-btn">
+				<li class="cur"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol>-->
+			<div class="Btn">
+				<span class="prev"><</span>
+				<span class="next">></span>
+			</div>
+		</div>
+		
+		<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var $Ul=$(".banner .banner-li");
+			var $li=$(".banner .banner-li li");
+			var $banner=$(".banner");
+			var key=0;
+			$Ul.after("<ol class='banner-btn'></ol>");
+			var oLi=$banner.find(".banner-btn");
+			//动态添加小圆点
+			$li.each(function(index,ele){
+				oLi.append("<li></li>")
+			})
+			
+			//按钮切换
+			$li.eq(0).css("z-index",key+1);
+			oLi.find("li").eq(0).addClass("cur")
+			oLi.find("li").mousemove(function(){
+				$(this).addClass("cur").siblings().removeClass("cur");
+				var index=$(this).index();
+				key=index;
+				$li.stop().fadeOut(300).eq(index).stop().fadeIn(300)
+			})
+			
+			
+			//下一张
+			$(".next").click(function(){
+				key=++key % $li.length;
+				oLi.find("li").eq(key).addClass("cur").siblings().removeClass("cur");
+				$li.stop().fadeOut(300).eq(key).stop().fadeIn(300)
+				
+			})
+			//上一张
+			$(".prev").click(function(){
+				key=--key % $li.length;
+				
+				oLi.find("li").eq(key).addClass("cur").siblings().removeClass("cur");
+				$li.stop().fadeOut(300).eq(key).stop().fadeIn(300)
+				
+			})
+			autoPlay();
+			//轮播
+			function autoPlay(){
+				clearInterval($Ul.timer);
+				$Ul.timer=setInterval(function(){
+					key=++key % $li.length;
+				oLi.find("li").eq(key).addClass("cur").siblings().removeClass("cur");
+				$li.stop().fadeOut(300).eq(key).stop().fadeIn(300)
+				},2000)
+				
+			}
+			//移入
+			$(".banner").mouseover(function(){
+				clearInterval($Ul.timer);
+			})
+			
+			//移出
+			$(".banner").mouseout(function(){
+				autoPlay()
+			})
+		</script>
+	</body>
+</html>
+
+
+

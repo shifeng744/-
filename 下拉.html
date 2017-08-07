@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.box{
+				width: 600px;
+				background: brown;
+				height: 50px;
+				margin: auto;
+				text-align: center;
+			}
+			.box ul li{
+				float: left;
+				line-height: 50px;
+				height: 50px;
+				width: 120px;
+			}
+			.box > .blist .slist li{
+				background: peru;
+				margin-top: 1px;
+			}
+			.box > .blist .slist{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="blist">
+				<li>
+					<span>首页</span>
+					<ul class="slist">
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+					</ul>
+				</li>
+			<ul class="blist">
+				<li>
+					<span>首页</span>
+					<ul class="slist">
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+					</ul>
+				</li><ul class="blist">
+				<li>
+					<span>首页</span>
+					<ul class="slist">
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+					</ul>
+				</li><ul class="blist">
+				<li>
+					<span>首页</span>
+					<ul class="slist">
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+					</ul>
+				</li><ul class="blist">
+				<li>
+					<span>首页</span>
+					<ul class="slist">
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+						<li>打爱迪生</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(".blist > li").hover(function(){
+				$(this).find(".slist").stop().slideToggle()
+			})
+		</script>
+	</body>
+</html>

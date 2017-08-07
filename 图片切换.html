@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			div{
+				width: 650px;
+				height: 250px;
+				overflow: hidden;
+				margin: 50px auto;
+				position: relative;
+			}
+			div ul{
+				z-index: 3;
+			}
+			div ul li:first-child{
+				z-index: 1;
+			}
+			div ul li{
+				position: absolute;
+			}
+			ol{
+				z-index: 999999999;
+				color: #fffff;
+				position: absolute;
+				bottom: 20px;
+				right: 20px;
+			}
+			ol li{
+				color: #ffffff;
+				float: left;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				border: 1px solid #FFFF00;
+				
+			}
+			.cur{
+				background: burlywood;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li ><img src="img/01.jpg"/></li>
+				<li><img src="img/02.jpg"/></li>
+				<li><img src="img/03.jpg"/></li>
+				<li><img src="img/04.jpg"/></li>
+				<li><img src="img/05.jpg"/></li>
+			</ul>
+			<ol>
+				<li class="cur">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+		<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var z=1;
+			$("ol li").mouseover(function(){
+				$(this).addClass("cur").siblings().removeClass("cur");
+				var index=$(this).index();
+				z++;
+				$("ul li").eq(index).css(
+					{'z-index':z,left:"650px"}
+				).stop().animate({
+					left:0
+				},600)
+			})
+		</script>
+		
+		
+		
+	</body>
+</html>
+
+
+
+
+

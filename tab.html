@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.box{
+				width: 350px;
+				border: 1px solid #FFC0CB;
+				margin: 50px auto;
+				
+			}
+			ul{
+				overflow: hidden;
+				
+				background: #FFC0CB;
+			}
+			ul li{
+				float: left;
+				padding: 20px 20px;
+				
+				
+			}
+			.content div{
+				display: none;
+			}
+			.content div:nth-child(1){
+				display: block;
+			}
+			.cur{
+				background: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li class="cur">首页</li>
+				<li>首页</li>
+				<li>首页</li>
+				<li>首页</li>
+			</ul>
+			<div id="" class="content">
+				<div class="a">11111111111111</div>
+				<div class="a" >22222222222</div>
+				<div class="a">13333333333331</div>
+				<div class="a">144444444444444</div>
+			</div>
+		</div>
+		
+		<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(".box ul li").click(function(){
+				$(this).addClass("cur").siblings().removeClass("cur");
+				var index=$(this).index();
+				$(".a").eq(index).show(300).siblings().hide();
+			})
+			$(".a").eq(0).prepend("<h1>aaa</h1>")
+		</script>
+	</body>
+</html>
+
+
